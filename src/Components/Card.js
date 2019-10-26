@@ -1,19 +1,22 @@
-import React from "react";
+import React, { useState } from "react"; /* 1 */
 
-/* 1 */
-const Card = ({ card }) => {
+import cardBack from "../images/CardBack.jpg"; /* 3 */
+
+const Card = ({ card, checkFlipped }) => {
+  const [flipped, changeFlip] = useState(false); /* 1 */
+
   return (
     <div className="col-3 my-1">
-      {/* 2 */}
       <img
         className="mx-auto"
-        src={card.image}
+        src={flipped ? card.front : cardBack}
         height="100%"
         width="100%"
-        key="front"
+        key="back"
+        onClick={() => changeFlip(!flipped)}
       />
     </div>
   );
 };
 
-export default Card; /* 3 */
+export default Card;
