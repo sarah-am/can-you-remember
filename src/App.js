@@ -5,29 +5,20 @@ import "./App.css";
 import cards from "./data";
 
 // Card Back Image
-import cardBack from "./images/CardBack.jpg";
+import cardBack from "./images/AppleCard.jpg";
+
+//Components
+import Card from "./Components/Card"; /* 1 */
 
 function App() {
-  let cardsGrid = cards.map(card => {
-    return (
-      <div className="col-3 my-1">
-        <img
-          className="mx-auto"
-          src={cardBack}
-          height="100%"
-          width="100%"
-          key="back"
-        />
-      </div>
-    );
-  }); /* 2 */
+  let cardsGrid = cards.map(card => (
+    <Card key={card.id} card={card} />
+  )); /* 2, 3 */
 
   return (
     <div className="App border my-5">
       <div className="container">
-        <div className="row">
-          {cardsGrid} {/* 3 */}
-        </div>
+        <div className="row">{cardsGrid}</div>
       </div>
     </div>
   );
